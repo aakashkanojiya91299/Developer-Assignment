@@ -1,0 +1,535 @@
+{
+	"info": {
+		"_postman_id": "40684b10-7ec8-46b7-a90c-e1df6f8eff84",
+		"name": "API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"aakash.kanojiya@stspl.com\",\r\n    \"password\":\"test@123\",\r\n    \"name\":\"aashish\"\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/trpc/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"trpc",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aakash.kanojiya1999@gmail.com\",\r\n    \"password\":\"test@123\",\r\n    \"name\":\"aashish\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/trpc/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"trpc",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 18:34:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"data\": {\n            \"success\": true,\n            \"message\": \"User registered successfully. Verification code sent.\",\n            \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTcyNTczNDA3MSwiZXhwIjoxNzI1NzM0NjcxfQ.PKcPgs9pqgLsMEDLHAqwVBenz1KDf_31iFBPK4EI7Ww\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "validateEmail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyNTcyMDQwNCwiZXhwIjoxNzI1NzIxMDA0fQ._xT08xtcCFuyDptKv0oBVjEpD_nuKEp8iAERrVBmHOs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"aakash.kanojiya@stspl.com\",\r\n    \"code\": 12345678\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/trpc/validateEmail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"trpc",
+						"validateEmail"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "404",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aakash.kanojiya@stspl.com\",\r\n    \"code\": 12345678\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/trpc/validateEmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"trpc",
+								"validateEmail"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 18:34:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"message\": \"Invalid token\",\n        \"code\": -32001,\n        \"data\": {\n            \"code\": \"UNAUTHORIZED\",\n            \"httpStatus\": 401,\n            \"stack\": \"TRPCError: Invalid token\\n    at eval (webpack-internal:///(api)/./src/server/trpc.ts:38:15)\\n    at callRecursive (file:///E:/Project/Full%20Stack%20assigment/ecom/node_modules/@trpc/server/dist/index.mjs:451:38)\\n    at resolve (file:///E:/Project/Full%20Stack%20assigment/ecom/node_modules/@trpc/server/dist/index.mjs:481:30)\\n    at callProcedure (file:///E:/Project/Full%20Stack%20assigment/ecom/node_modules/@trpc/server/dist/config-d5fdbd39.mjs:155:12)\\n    at inputToProcedureCall (file:///E:/Project/Full%20Stack%20assigment/ecom/node_modules/@trpc/server/dist/resolveHTTPResponse-2fc435bb.mjs:46:28)\\n    at file:///E:/Project/Full%20Stack%20assigment/ecom/node_modules/@trpc/server/dist/resolveHTTPResponse-2fc435bb.mjs:169:51\\n    at Array.map (<anonymous>)\\n    at resolveHTTPResponse (file:///E:/Project/Full%20Stack%20assigment/ecom/node_modules/@trpc/server/dist/resolveHTTPResponse-2fc435bb.mjs:169:32)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async file:///E:/Project/Full%20Stack%20assigment/ecom/node_modules/@trpc/server/dist/nodeHTTPRequestHandler-97af83bc.mjs:67:9\\n    at async file:///E:/Project/Full%20Stack%20assigment/ecom/node_modules/@trpc/server/dist/adapters/next.mjs:45:9\\n    at async K (E:\\\\Project\\\\Full Stack assigment\\\\ecom\\\\node_modules\\\\next\\\\dist\\\\compiled\\\\next-server\\\\pages-api.runtime.dev.js:21:2871)\\n    at async U.render (E:\\\\Project\\\\Full Stack assigment\\\\ecom\\\\node_modules\\\\next\\\\dist\\\\compiled\\\\next-server\\\\pages-api.runtime.dev.js:21:3955)\\n    at async DevServer.runApi (E:\\\\Project\\\\Full Stack assigment\\\\ecom\\\\node_modules\\\\next\\\\dist\\\\server\\\\next-server.js:598:9)\\n    at async NextNodeServer.handleCatchallRenderRequest (E:\\\\Project\\\\Full Stack assigment\\\\ecom\\\\node_modules\\\\next\\\\dist\\\\server\\\\next-server.js:269:37)\",\n            \"path\": \"validateEmail\"\n        }\n    }\n}"
+				},
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aakash.kanojiya1999@gmail.com\",\r\n    \"code\": 12345678\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/trpc/validateEmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"trpc",
+								"validateEmail"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 18:35:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"data\": {\n            \"success\": true,\n            \"message\": \"Email validated successfully\",\n            \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYWFrYXNoLmthbm9qaXlhMTk5OUBnbWFpbC5jb20iLCJpYXQiOjE3MjU3MzQxMTgsImV4cCI6MTcyNTgyMDUxOH0.ySO1L3L-DvgqnOly1JpAYCH0QlxSgqyYXxVLQ4tzn3E\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "getCategories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWFrYXNoLmthbm9qaXlhQHN0c3BsLmNvbSIsImlhdCI6MTcyNTcyMTI4MSwiZXhwIjoxNzI1ODA3NjgxfQ.fV7F4AVDY0fJ79hXW0kD8jhaLcm4wfptgMqdadtjB2o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/trpc/getCategories?page=1&limit=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"trpc",
+						"getCategories"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getCategories",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/trpc/getCategories?page=1&limit=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"trpc",
+								"getCategories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 18:33:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"data\": {\n            \"success\": true,\n            \"message\": \"Categories fetched successfully\",\n            \"categories\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"Health\",\n                    \"description\": \"Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals\",\n                    \"createdAt\": \"2024-09-07T14:50:19.697Z\"\n                },\n                {\n                    \"id\": 2,\n                    \"name\": \"Games\",\n                    \"description\": \"The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design\",\n                    \"createdAt\": \"2024-09-07T14:50:20.141Z\"\n                },\n                {\n                    \"id\": 3,\n                    \"name\": \"Music\",\n                    \"description\": \"The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J\",\n                    \"createdAt\": \"2024-09-07T14:50:20.364Z\"\n                },\n                {\n                    \"id\": 4,\n                    \"name\": \"Kids\",\n                    \"description\": \"Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles\",\n                    \"createdAt\": \"2024-09-07T14:50:20.586Z\"\n                },\n                {\n                    \"id\": 5,\n                    \"name\": \"Grocery\",\n                    \"description\": \"Carbonite web goalkeeper gloves are ergonomically designed to give easy fit\",\n                    \"createdAt\": \"2024-09-07T14:50:20.808Z\"\n                },\n                {\n                    \"id\": 6,\n                    \"name\": \"Books\",\n                    \"description\": \"The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive\",\n                    \"createdAt\": \"2024-09-07T14:50:21.030Z\"\n                }\n            ],\n            \"pagination\": {\n                \"currentPage\": 1,\n                \"totalPages\": 17,\n                \"totalCount\": 100\n            }\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"aakash.kanojiya@stspl.com\",\r\n    \"password\":\"test@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/trpc/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"trpc",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aakash.kanojiya@stspl.com\",\r\n    \"password\":\"test@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/trpc/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"trpc",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 18:33:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"data\": {\n            \"success\": true,\n            \"message\": \"Login successful\",\n            \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWFrYXNoLmthbm9qaXlhQHN0c3BsLmNvbSIsImlhdCI6MTcyNTczNDAyNywiZXhwIjoxNzI1ODIwNDI3fQ.3omm-fNG3Qix3owSuj8UzeHruDHiYgNsBC0pQ_Uisew\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "updateSelectedCategories",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "output",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryIds\":[100]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/trpc/updateSelectedCategories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"trpc",
+								"updateSelectedCategories"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 18:32:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"data\": {\n            \"success\": true,\n            \"message\": \"Selected categories updated successfully\"\n        }\n    }\n}"
+				}
+			]
+		}
+	]
+}
