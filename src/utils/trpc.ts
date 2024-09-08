@@ -1,6 +1,6 @@
-// src/utils/trpc.ts
+
 import { createTRPCNext } from '@trpc/next';
-import { AppRouter } from '../server/router'; // Adjust path as needed
+import { AppRouter } from '../server/router';
 import { NextPageContext } from 'next';
 import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client';
 

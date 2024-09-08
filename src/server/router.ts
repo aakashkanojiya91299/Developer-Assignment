@@ -68,6 +68,7 @@ export const appRouter = router({
         throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Invalid credentials' });
       }
       const token = generateToken({ userId: user.id, email }, '1d');
+
       return { success: true, message: 'Login successful', token };
     }),
 
@@ -140,6 +141,7 @@ export const appRouter = router({
         },
       };
     }),
+    
   updateSelectedCategories: publicProcedure
     .use(authMiddleware)
     .use(emailVerificationMiddleware)
