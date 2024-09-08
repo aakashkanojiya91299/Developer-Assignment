@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {jwtDecode} from 'jwt-decode';
 import { trpc } from '@/utils/trpc';
+import Link from 'next/link';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -127,7 +128,7 @@ const Login = () => {
                 LOGIN
               </button>
               <p className="text-center text-sm font-light text-black-500 dark:text-black-400">
-                Don’t have an account yet? <a href="/register" className="font-medium text-primary-600 hover:underline dark:text-primary-800">SIGN UP</a>
+                Don’t have an account yet? <Link href="/register" className="font-medium text-primary-600 hover:underline dark:text-primary-800">SIGN UP</Link>
               </p>
             </form>
           </div>

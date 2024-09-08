@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { trpc } from '../utils/trpc';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
@@ -127,9 +128,9 @@ const Register = () => {
               </button>
               <p className="text-center text-sm font-light text-black-500 dark:text-black-400">
                 Already have an account?{' '}
-                <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-800">
+                <Link href="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-800">
                   LOGIN
-                </a>
+                </Link>
               </p>
             </form>
           </div>

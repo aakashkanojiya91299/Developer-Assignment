@@ -11,7 +11,7 @@ interface FormData {
 const ValidateEmail = () => {
   const router = useRouter();
   const { email, token } = router.query;
-  const { register, handleSubmit, reset, setValue, getValues } = useForm<FormData>();
+  const {  handleSubmit, reset, setValue, getValues } = useForm<FormData>();
   const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
