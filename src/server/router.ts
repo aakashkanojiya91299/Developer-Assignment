@@ -67,7 +67,16 @@ export const appRouter = router({
       if (!isValidPassword) {
         throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Invalid credentials' });
       }
-      const token = generateToken({ userId: user.id, email }, '1d');
+      let token
+      if(user.verified){
+
+        token = generateToken({ userId: user.id, email,isVerified: user.verified}, '1d');
+      }else{
+        cache.set(`verification_code_${email}`, verificationCode);
+        // Send email after user creation with the verification code
+        sendVerificationEmail(email, verificationCode);
+        token = generateToken({ userId: user.id, email, isVerified:user.verified}, '10m');
+      }
 
       return { success: true, message: 'Login successful', token };
     }),
@@ -98,7 +107,7 @@ export const appRouter = router({
       if (!user) {
         throw new TRPCError({ code: 'NOT_FOUND', message: 'User not found' });
       }
-      const token = generateToken({ userId: user.id, email }, '1d');
+      const token = generateToken({ userId: user.id, email,isVerified:user.verified}, '1d');
       return { success: true, message: 'Email validated successfully', token };
     }),
 
@@ -108,10 +117,8 @@ export const appRouter = router({
     .input(String)  // Input remains string
     .query(async (opts) => {
       const queryParams: QueryParams = opts.ctx.req.query;
-
       const page = parseInt(queryParams.page ?? '1', 10);  // Default to 1 if not provided or invalid
       let limit = parseInt(queryParams.limit ?? '6', 10);  // Default to 6 if not provided or invalid
-
       // Ensure limit is at least 6
       if (limit < 6) {
         limit = 6;
@@ -142,6 +149,34 @@ export const appRouter = router({
       };
     }),
     
+    getUserCategories:publicProcedure
+    .use(authMiddleware)
+    .use(emailVerificationMiddleware) 
+    .query(async ({ ctx }) => {
+      const userId = ctx.user?.userId;
+      if (!userId) {
+        throw new TRPCError({ code: 'UNAUTHORIZED', message: 'User not authenticated' });
+      }
+  
+      // Fetch user's selected categories
+      const userCategories = await prisma.userCategory.findMany({
+        where: { userId },
+        include: {
+          category: true, // Include category details
+        },
+      });
+  
+      const categories = userCategories.map((userCategory) => userCategory.category);
+  
+     
+  
+      return {
+        success: true,
+        message: 'User categories fetched successfully',
+        categories,
+      };
+    }),
+
   updateSelectedCategories: publicProcedure
     .use(authMiddleware)
     .use(emailVerificationMiddleware)
@@ -174,8 +209,6 @@ export const appRouter = router({
         message: 'Selected categories updated successfully',
       };
     })
-
-
 });
 
 export type AppRouter = typeof appRouter;

@@ -5,7 +5,8 @@ const JWT_SECRET = process.env.JWT_SECRET || 'Ecom';
 
 interface JwtPayload {
   userId: number;  
-  email?: string;  
+  email?: string;
+  isVerified?:boolean  
 }
 export const generateToken = (payload: JwtPayload,expiresIn:string) => {
   return jwt.sign(payload, JWT_SECRET, { expiresIn: expiresIn });
